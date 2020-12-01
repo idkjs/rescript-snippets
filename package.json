@@ -1,0 +1,22 @@
+{
+    "name": "rescript-react-graphql-snippets",
+    "displayName": "rescriptreact-graphql-snippets",
+    "description": "RescriptReact with GraphQL snippets",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.35.0"
+    },
+    "repository": "git@github.com:idkjs/rescript-snippets.git",
+    "publisher": "Alain Armand",
+    "categories": [
+        "Snippets"
+    ],
+    "contributes": {
+        "snippets": [
+            {
+                "language": "rescript",
+                "path": "./snippets/snippets.json"
+            }
+        ]
+    }
+}

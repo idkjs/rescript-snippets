@@ -1,0 +1,195 @@
+{
+  "Rescript Bucklescript global ": {
+    "prefix": "resbsglobal",
+    "body": [
+        "@bs.val external $bindingToBeCalledInRescript: $typeSignature = \"$functionNameOnGlobalScope\""
+    ],
+    "description": "Rescript Bucklescript global "
+},
+"Rescript null or undefined type": {
+  "prefix": "resbsnullundefined",
+  "body": [
+      "Js.Nullable.t<string>"
+  ],
+  "description": "Rescript null or undefined type"
+},
+
+  "bs require": {
+      "prefix": "resreq",
+      "body": [
+          "@bs.val external require: string => string = \"\",",
+          "let $1 = require(\"$2\");"
+      ],
+      "description": "require external javascript package and assing a let binding to it."
+  },
+  "React.string": {
+    "prefix": "resstr",
+    "body": [
+        "{$1 -> React.string}"
+    ],
+    "description": "add `React.string` pipe to string in JSX component"
+},
+"React component": {
+  "prefix": "rescmp",
+  "body": [
+      "@react.component",
+      "let make = ($1) => {",
+      "  $2",
+      "}"
+  ],
+  "description": "Write basic Rescript component with JSX 3 syntax"
+},
+"React dom render": {
+  "prefix": "resdomrender",
+  "body": [
+      "ReactDOMRe.renderToElementWithId(",
+      "  <$ComponentName $prop />,",
+      "  \"$element\",",
+      ");"
+  ],
+  "description": "React dom render"
+},
+
+"React useReducer": {
+  "prefix": "resred",
+  "body": [
+      "let (state, dispatch) = React.useReducer( ",
+      "  (state, action) =>",
+      "    switch (action) {",
+      "      | $1 => { $2 }",
+      "    }",
+      "  { $3 }",
+      ")"
+  ],
+  "description": "add `useReducer` hook in React"
+},
+"React useState": {
+  "prefix": "resstate",
+  "body": [
+      "let ($1, set$1) = React.useState(() => $2)"
+  ],
+  "description": "React.useState hook"
+},
+"React.useEffect hook": {
+  "prefix": "reseff0",
+  "body": [
+    "React.useEffect0(() => {",
+    "  $sideeffect",
+    "})"
+  ],
+  "description": "React.useEffect hook"
+},
+"React useEffect1": {
+  "prefix": "reseff1",
+  "body": [
+      "React.useEffect1(",
+      "    () => {",
+      "      $returnToUnsubscribeOrNone",
+      "    },",
+      "  [|$dependency|],",
+      ")"
+  ],
+  "description": "React useEffect1"
+},
+"React component default from JS": {
+  "prefix": "resjscmpdefault",
+  "body": [
+      "@bs.module \"$1\"@react.component",
+      "external make: ($2: $3) => React.element = \"default\";"
+  ],
+  "description": "Bring React component from Js"
+},
+"React component from JS": {
+  "prefix": "resjscmp",
+  "body": [
+      "@bs.module \"$1\"@react.component",
+      "external make: ($2: $3) => React.element = \"$componentPath\""
+  ],
+  "description": "Bring React component from Js"
+},
+"ReactEvent target": {
+  "prefix": "reseventtarget",
+  "body": [
+      "e => e->ReactEvent.Form.target##value |> $1"
+  ],
+  "description": "get form `event.target.value`"
+},
+"React inline style": {
+  "prefix": "resstyle",
+  "body": [
+      "let $1 = ReactDOMRe.Style.make($2);"
+  ],
+  "description": "write inline style"
+},
+"ResApolloClient http link": {
+  "prefix": "resgqlhttp",
+  "body": [
+      "  let httpLink = ApolloLinks.createHttpLink(~uri=\"$uri\", ());"
+  ],
+  "description": "ResApolloClient Httplink"
+},
+"ResApolloClient setup": {
+  "prefix": "resgqlapollocreate",
+  "body": [
+      "let inMemoryCache = ApolloInMemoryCache.createInMemoryCache();",
+      "",
+      "ApolloClient.make(",
+      "  ~link,",
+      "  ~cache=inMemoryCache,",
+      "  (),",
+      ")"
+  ],
+  "description": "ResApolloClient setup"
+},
+"React Apollo split": {
+  "prefix": "resgqlsplit",
+  "body": [
+      "let link =",
+      "  ApolloClient.Link.split(",
+      "    operation => {",
+      "      let operationDefition =",
+      "       ApolloClient.Utilities.getOperationDefinition(operation.query);",
+      "      operationDefition.kind == \"OperationDefinition\"",
+      "      &&",
+      "      operationDefition.operation == \"subscription\";",
+      "    },",
+      "    webSocketLink,",
+      "    httpLink,",
+      "  )"
+  ],
+  "description": "ResApolloClient split"
+},
+"React websocket": {
+  "prefix": "resgqlws",
+  "body": [
+      "  let webSocketLink =",
+      "    ApolloClient.Link.WebSocketLink.make(",
+      "      ~uri=\"$wsGraphQLendpointuri\",",
+      "      ~reconnect=true,",
+      "      (),",
+      "    )"
+  ],
+  "description": "ResApolloClient Websocket Link"
+},
+"React GraphQL gql": {
+  "prefix": "rmgql",
+  "body": [
+      "module $1 = %graphql(",
+      "  `",
+      "     $2",
+      "  `",
+      ")",
+      ""
+
+  ],
+  "description": "gql for your queries, mutations, subscription"
+},
+
+"React GraphQL mutation fn": {
+  "prefix": "rmgqlmut",
+  "body": [
+      "mutation(~variables=$1##variables,()) |> ignore;"
+  ],
+  "description": "React GraphQL mutation fn"
+}
+}
